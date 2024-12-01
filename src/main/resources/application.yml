@@ -1,0 +1,37 @@
+server:
+    port: 4003
+    error:
+        include-message: always
+
+# debug: true
+spring:
+    application:
+        name: gestion-domain
+    cassandra:
+        local-datacenter: datacenter1
+        keyspace-name: yowyobdb
+        schema-action: create_if_not_exists
+        request.timeout: 10s
+        connection.connect-timeout: 10s
+        connection.init-query-timeout: 10s
+        contact-points: 127.0.0.1
+        port: 9042
+        
+    servlet:
+        multipart:
+            enabled: true
+            file-size-threshold: 2KB
+            max-file-size: 1024MB
+            max-request-size: 1024MB
+
+main:
+    allow-bean-definition-overriding: true
+
+yowyob:
+    openapi:
+        prod-url: http://localhost:4003
+        dev-url: http://localhost:4003
+        url: http://localhost:5003
+    
+data:
+    product-dir: /src/main/resources/image
